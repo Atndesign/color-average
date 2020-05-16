@@ -1,0 +1,38 @@
+body {
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: black;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+}
+
+.wrapper>img {
+    margin-bottom: 1rem;
+}
+
+#hex {
+    font-size: 4rem;
+    text-align: center;
+}
+
+canvas {
+    display: none;
+}
