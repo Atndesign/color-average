@@ -10,28 +10,43 @@ let image = new Image();
 
 function analyseImg(image) {
   let pixelArr = { r: 0, g: 0, b: 0 };
+  let darkPixelArr = { r: 0, g: 0, b: 0 };
   let pixels = ctx.getImageData(0, 0, image.width, image.height);
   console.log(pixels);
   let count = 0;
+  let darkCount = 0;
   for (let pixel = 0; pixel < pixels.data.length; pixel += 20) {
     let red = pixels.data[pixel];
     let green = pixels.data[pixel + 1];
     let blue = pixels.data[pixel + 2];
 
-    if (checkLight(red, green, blue) > 20) {
+    if (checkLight(red, green, blue) > 150) {
       pixelArr.r += red;
       pixelArr.g += green;
       pixelArr.b += blue;
       count++;
+    } else if (
+      checkLight(red, green, blue) > 10 &&
+      checkLight(red, green, blue) < 150
+    ) {
+      darkPixelArr.r += red;
+      darkPixelArr.g += green;
+      darkPixelArr.b += blue;
+      darkCount++;
     }
   }
   pixelArr.r = Math.floor(pixelArr.r / count);
   pixelArr.g = Math.floor(pixelArr.g / count);
   pixelArr.b = Math.floor(pixelArr.b / count);
 
-  console.log(pixelArr);
+  darkPixelArr.r = Math.floor(darkPixelArr.r / darkCount);
+  darkPixelArr.g = Math.floor(darkPixelArr.g / darkCount);
+  darkPixelArr.b = Math.floor(darkPixelArr.b / darkCount);
+
   let hex = fullColorHex(pixelArr.r, pixelArr.g, pixelArr.b);
-  updateHex(hex);
+  let darkHex = fullColorHex(darkPixelArr.r, darkPixelArr.g, darkPixelArr.b);
+
+  updateHex(hex, darkHex);
 }
 function checkLight(r, g, b) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
@@ -67,9 +82,9 @@ function LoadNewImage(e) {
   read.readAsDataURL(uploaded);
 }
 
-function updateHex(hex) {
-  console.log(hex);
-  document.body.style.backgroundColor = "#" + hex;
+function updateHex(hex, darkHex) {
+  console.log({ hex, darkHex });
+  document.body.style.backgroundImage = `linear-gradient(45deg, #${hex}, #${darkHex})`;
   document.getElementById("hex").innerText = "#" + hex;
 }
 
