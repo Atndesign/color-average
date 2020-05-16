@@ -14,17 +14,27 @@ function analyseImg(image) {
   console.log(pixels);
   let count = 0;
   for (let pixel = 0; pixel < pixels.data.length; pixel += 20) {
-    pixelArr.r += pixels.data[pixel];
-    pixelArr.g += pixels.data[pixel + 1];
-    pixelArr.b += pixels.data[pixel + 2];
-    count++;
+    let red = pixels.data[pixel];
+    let green = pixels.data[pixel + 1];
+    let blue = pixels.data[pixel + 2];
+
+    if (checkLight(red, green, blue) > 20) {
+      pixelArr.r += red;
+      pixelArr.g += green;
+      pixelArr.b += blue;
+      count++;
+    }
   }
   pixelArr.r = Math.floor(pixelArr.r / count);
   pixelArr.g = Math.floor(pixelArr.g / count);
   pixelArr.b = Math.floor(pixelArr.b / count);
+
   console.log(pixelArr);
   let hex = fullColorHex(pixelArr.r, pixelArr.g, pixelArr.b);
   updateHex(hex);
+}
+function checkLight(r, g, b) {
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
 var rgbToHex = function (rgb) {
