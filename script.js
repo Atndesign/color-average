@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-canvas.height = innerHeight / 2;
-canvas.width = innerWidth / 2;
+canvas.height = innerHeight;
+canvas.width = innerWidth;
 ctx.fillStyle = "black";
 ctx.rect(80, 80, 80, 80);
 ctx.fill();
@@ -24,7 +24,7 @@ function analyseImg(image) {
   pixelArr.b = Math.floor(pixelArr.b / count);
   console.log(pixelArr);
   let hex = fullColorHex(pixelArr.r, pixelArr.g, pixelArr.b);
-  changeBg(hex);
+  updateHex(hex);
 }
 
 var rgbToHex = function (rgb) {
@@ -57,9 +57,10 @@ function LoadNewImage(e) {
   read.readAsDataURL(uploaded);
 }
 
-function changeBg(hex) {
+function updateHex(hex) {
   console.log(hex);
   document.body.style.backgroundColor = "#" + hex;
+  document.getElementById("hex").innerText = "#" + hex;
 }
 
 document.getElementById("load").addEventListener("change", function (e) {
