@@ -6,7 +6,7 @@ Color-average is a project I wanted to do for a long time, so basicaly I upload 
 
 ## How to use it?
 
-Just follow this [link](https://atndesign.github.io/color-average/) .
+Just follow this [link](https://atndesign.github.io/color-average/index.html) .
 
 ## Techologies:
 
