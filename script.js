@@ -83,9 +83,20 @@ function LoadNewImage(e) {
 }
 
 function updateHex(hex, darkHex) {
-  console.log({ hex, darkHex });
+  document.querySelector("#resultCircle").innerHTML = "";
+  createHexCircle(hex);
+  createHexCircle(darkHex);
   document.body.style.backgroundImage = `linear-gradient(45deg, #${hex}, #${darkHex})`;
-  document.getElementById("hex").innerText = "#" + hex;
+  document.getElementById(
+    "hex"
+  ).innerText = `linear-gradient(45deg, #${hex}, #${darkHex})`;
+}
+
+function createHexCircle(color) {
+  let div = document.createElement("div");
+  div.classList.add("hex-circle");
+  div.style.backgroundColor = `#${color}`;
+  document.querySelector("#resultCircle").appendChild(div);
 }
 
 document.getElementById("load").addEventListener("change", function (e) {

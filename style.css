@@ -1,6 +1,8 @@
 body {
+    padding-top: 35px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;
+    overflow-y: hidden;
 }
 
 .outer-wrapper {
@@ -11,7 +13,8 @@ body {
 }
 
 .input {
-    border: 1px solid black
+    border: 1px solid black;
+    margin-bottom: 4rem;
 }
 
 .wrapper {
@@ -34,10 +37,20 @@ body {
 }
 
 #hex {
-    font-size: 4rem;
+    font-size: 1.4rem;
     text-align: center;
 }
 
 canvas {
     display: none;
+}
+
+.hex-circle {
+    height: 80px;
+    width: 80px;
+}
+
+.result-circles {
+    display: flex;
+    justify-content: space-around
 }

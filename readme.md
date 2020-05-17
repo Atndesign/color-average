@@ -1,8 +1,8 @@
-# Color-average
+# Colorient
 
 ## Project Description:
 
-Color-average is a project I wanted to do for a long time, so basicaly I upload an image and then get the average color of it
+Colorient is a project I wanted to do for a long time, so basicaly I upload an image and then get the average color of it
 
 ## How to use it?
 
